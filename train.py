@@ -31,8 +31,6 @@ logging.info("Data processed.")
 
 data = data.drop(["Date", "Seconds"], axis=1)
 
-print(data.head())
-
 X, y = utils.df_to_X_y2(data)
 logging.info("Data scaled.")
 
@@ -61,3 +59,9 @@ logging.info("Model trained.")
 saved_model_path = "./models"
 tf.saved_model.save(model, saved_model_path)
 logging.info("Model saved.")
+
+loss = model.evaluate(X_test, y_test)
+
+# Save results into results.txt
+with open('results.txt', 'w') as f:
+    f.write("\nMeanSquaredError = " + str(loss[0]))
