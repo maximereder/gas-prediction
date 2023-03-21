@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def df_to_X_y2(df, window_size=6):
@@ -13,4 +14,10 @@ def df_to_X_y2(df, window_size=6):
     return np.array(X), np.array(y)
 
 
-    
+def plot(df, title, x_label, y_label):
+    plt.figure(figsize=(16, 8))
+    plt.title(title)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.legend(df.columns.values, shadow=True)
+    plt.savefig(title + '.png')

@@ -65,3 +65,5 @@ loss = model.evaluate(X_test, y_test)
 # Save results into results.txt
 with open('results.txt', 'w') as f:
     f.write("\nMeanSquaredError = " + str(loss[0]))
+
+utils.plot(pd.DataFrame({'y_test': y_test, 'y_pred': model.predict(X_test).flatten()}), 'Prediction', 'Time', 'Consumption')
