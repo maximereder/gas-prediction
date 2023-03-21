@@ -10,9 +10,6 @@ jobs:
         run: |
           pip install -r requirements.txt
           python train.py
-      - name: Write CML report
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
           cat results.txt >> report.md
           cml comment create report.md
+          
